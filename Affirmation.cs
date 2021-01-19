@@ -60,7 +60,7 @@ namespace AffirmationAPI{
             "I make room for fun and playfulness",
             "I appreciate intimacy",
             "I am very good at letting go",
-            "I am grateful for my life"
+            "I am grateful for my life",
             "I love being myself",
             "Time is on my side",
             "I surrender to love",
