@@ -2,7 +2,7 @@ using System;
 
 namespace AffirmationAPI{
     public static class Affirmation{
-        static string[] x= {
+        private static string[] x= {
             "I am successful in whatever I do",
             "I plan my work and work my plan",
             "I focus on what is truly essential",
@@ -110,11 +110,13 @@ namespace AffirmationAPI{
             "I am blessed with an incredible family and wonderful friends"
             };
 
-        public static string getAffirmationByIndex(int indx){
+        public static string getAffirmationByIndex(int indx) {
+            if(isEmpty()) throw new IndexOutOfRangeException();
             return indx > x.Length -1 ? x[x.Length -1] : x[indx];
         }
 
         public static string getRandomAffirmation(){
+            if(isEmpty()) throw new NullReferenceException();
             return x[ (int) new Random().Next(0, x.Length) ];
         }
 
@@ -128,7 +130,9 @@ namespace AffirmationAPI{
 
         public static void remove(int indx){}
 
-        public static void isEmpty(){}
+        public static Boolean isEmpty(){
+            return x.Length == 0 || x == null ? true : false;
+        }
     
     }
 }
