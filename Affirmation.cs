@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace AffirmationAPI{
     public static class Affirmation{
@@ -120,17 +121,36 @@ namespace AffirmationAPI{
             return x[ (int) new Random().Next(0, x.Length) ];
         }
 
-        public static void getAffirmationList(){}
+        public static List<string> getAffirmationList(){
+            return new List<string>(x);
+        }
 
-        public static void getAffirmationLength(){}
+        public static int getAffirmationLength(){
+            return getAffirmationList().Count;
+        }
 
-        public static void setAffirmationAt(int indx, String affirmation){}
+        public static void setAffirmationAt(int index, string affirmation){
+            x[index] = affirmation;
+        }
 
-        public static void add(String affirmation){}
+        public static void add(string affirmation){
+            List<string> affList= getAffirmationList();
+            x= null;
+            x= new string[affList.Count +1];
+            int counter = 0;
+            foreach (var item in affList){
+                x[counter]= item;
+                counter++;
+            }
+            x[affList.Count] = affirmation;
+            
+        }
 
-        public static void remove(int indx){}
+        public static void remove(int indx){
+            
+        }
 
-        public static Boolean isEmpty(){
+        public static bool isEmpty(){
             return x.Length == 0 || x == null ? true : false;
         }
     
