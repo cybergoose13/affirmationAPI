@@ -144,7 +144,11 @@ namespace AffirmationAPI{
             return textList;
         }
 
+        public static void getRandomTextFileAff(string path){}
+
         public static void getJsonFileList(string path){}
+
+        public static void getRandomJsonFileAff(string path){}
 
         public static bool isEmpty(){
             return affirmationList.Count == 0 || affirmationList == null ? true : false;
