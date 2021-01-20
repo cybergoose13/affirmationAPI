@@ -3,7 +3,8 @@ using System.Collections.Generic;
 
 namespace AffirmationAPI{
     public static class Affirmation{
-        private static string[] x= {
+
+        private static List<string> affirmationList= new List<string>(){
             "I am successful in whatever I do",
             "I plan my work and work my plan",
             "I focus on what is truly essential",
@@ -109,49 +110,35 @@ namespace AffirmationAPI{
             "I act with courage and confidence",
             "I love myself more everyday",
             "I am blessed with an incredible family and wonderful friends"
-            };
+        };
+        private static string[] x= {};
 
-        public static string getAffirmationByIndex(int indx) {
+        public static string getAffirmationByIndex(int index) {
             if(isEmpty()) throw new IndexOutOfRangeException();
-            return indx > x.Length -1 ? x[x.Length -1] : x[indx];
+            return index > affirmationList.Count -1 ? affirmationList[affirmationList.Count - 1] : affirmationList[index];
         }
 
         public static string getRandomAffirmation(){
             if(isEmpty()) throw new NullReferenceException();
-            return x[ (int) new Random().Next(0, x.Length) ];
+            return affirmationList[ (int) new Random().Next(0, affirmationList.Count) ];
         }
 
         public static List<string> getAffirmationList(){
-            return new List<string>(x);
+            return affirmationList;
         }
 
         public static int getAffirmationLength(){
-            return getAffirmationList().Count;
+            return affirmationList.Count;
         }
 
         public static void setAffirmationAt(int index, string affirmation){
-            x[index] = affirmation;
+            affirmationList[index] = affirmation;
         }
 
-        public static void add(string affirmation){
-            List<string> affList= getAffirmationList();
-            x= null;
-            x= new string[affList.Count +1];
-            int counter = 0;
-            foreach (var item in affList){
-                x[counter]= item;
-                counter++;
-            }
-            x[affList.Count] = affirmation;
-            
-        }
-
-        public static void remove(int indx){
-            
-        }
+        
 
         public static bool isEmpty(){
-            return x.Length == 0 || x == null ? true : false;
+            return affirmationList.Count == 0 || affirmationList == null ? true : false;
         }
     
     }
