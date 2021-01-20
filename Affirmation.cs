@@ -111,7 +111,6 @@ namespace AffirmationAPI{
             "I love myself more everyday",
             "I am blessed with an incredible family and wonderful friends"
         };
-        private static string[] x= {};
 
         public static string getAffirmationByIndex(int index) {
             if(isEmpty()) throw new IndexOutOfRangeException();
@@ -127,7 +126,7 @@ namespace AffirmationAPI{
             return affirmationList;
         }
 
-        public static int getAffirmationLength(){
+        public static int Length(){
             return affirmationList.Count;
         }
 
@@ -135,7 +134,17 @@ namespace AffirmationAPI{
             affirmationList[index] = affirmation;
         }
 
-        
+        public static List<string> getTextFileList(string path){
+            if(!(System.IO.File.Exists(@path))) throw new NullReferenceException();
+            List<string> textList= new List<string>();
+            string[] lines= System.IO.File.ReadAllLines(@path);
+            foreach (var line in lines){
+                textList.Add(line);
+            }
+            return textList;
+        }
+
+        public static void getJsonFileList(string path){}
 
         public static bool isEmpty(){
             return affirmationList.Count == 0 || affirmationList == null ? true : false;
